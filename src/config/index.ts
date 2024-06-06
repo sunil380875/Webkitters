@@ -12,6 +12,7 @@ const configs = {
   CLOUD_FRONT_DISTRIBUTION_ID:
     `${process.env.CLOUD_FRONT_DISTRIBUTION_ID}` || "",
   REGION: `${process.env.REGION}` || "",
+  connectionDB: `${process.env.CONNECTION_DB}` || "",
 };
 
 export { configs };

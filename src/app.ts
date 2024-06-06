@@ -2,11 +2,12 @@ import express, { Application } from "express";
 import fs from "fs";
 import { createServer } from "http";
 import path from "path";
-
+import Database from "./db";
 class App {
   public app: Application;
   constructor() {
     this.app = express();
+    new Database();
   }
 
   public listen(appInt: { port: number }) {
