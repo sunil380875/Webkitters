@@ -1,0 +1,25 @@
+{
+  "name": "webskitter-skm-api",
+  "version": "1.0.0",
+  "description": "A Task Project",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./build/server.js",
+    "dev": "tsnd --respawn ./src/server.ts",
+    "build": "npx tsc"
+  },
+  "author": "Sunil Kumar Mishra",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-fileupload": "^1.5.0",
+    "http-errors": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/express-fileupload": "^1.5.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.4.5"
+  }
+}
