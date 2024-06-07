@@ -1,6 +1,8 @@
 import { UploadedFile } from "express-fileupload";
 import { User } from "../model";
 import { MediaStoreService, PasswordHasServices, JWTLogic } from "../service";
+import { NotFound } from "http-errors";
+import { Types } from "mongoose";
 type SIGNUP_TYPE = {
   name: string;
   email: string;
@@ -74,6 +76,34 @@ class UserLogic {
         token,
       };
       return data;
+    } catch (error) {
+      throw error;
+    }
+  }
+  public async userProfile(id: string) {
+    try {
+      const user = await User.aggregate([
+        {
+          $match: {
+            $expr: {
+              $eq: ["$_id", new Types.ObjectId(id)],
+            },
+          },
+        },
+        {
+          $project: {
+            id: "$_id",
+            _id: 0,
+            name: "$name",
+            email: "$email",
+            profilePicture: "$profilePicture",
+            profilePicturePath: "$profilePicturePath",
+            role: "$role",
+          },
+        },
+      ]);
+      if (!user[0].email) throw new NotFound("User not found");
+      return user[0];
     } catch (error) {
       throw error;
     }
