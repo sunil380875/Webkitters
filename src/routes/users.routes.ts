@@ -2,7 +2,6 @@ import { Router } from "express";
 import { UserController } from "../controllers";
 import UserValidation from "../validation/user.validation";
 import ProtectedMiddleware from "../middleware/protected.middleware";
-import { User } from "../model";
 
 export default class UserRoutes {
   private router: Router;
