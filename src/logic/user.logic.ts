@@ -122,7 +122,6 @@ class UserLogic {
             dir: "users",
           })
         : undefined;
-      console.log(photoURL);
       const editProfile = await User.findByIdAndUpdate(id, {
         name,
         email,
