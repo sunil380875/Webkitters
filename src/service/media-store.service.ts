@@ -9,7 +9,6 @@ import {
 } from "@aws-sdk/client-s3";
 import { UploadedFile } from "express-fileupload";
 import { configs } from "../config";
-console.log(configs);
 interface ImageType {
   url: string;
   path: string;

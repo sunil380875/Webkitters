@@ -15,9 +15,15 @@ export default class UserRoutes {
   private routes() {
     //  user signup
     this.router.post(
-      "/",
+      "/signup",
       UserValidation.create,
       this.userController.signupUser
+    );
+    // user login
+    this.router.post(
+      "/login",
+      UserValidation.create,
+      this.userController.loginUser
     );
   }
 }

@@ -24,6 +24,18 @@ class UserController {
       next(error);
     }
   }
-  public async loginUser(req: Request, res: Response) {}
+  public async loginUser(req: Request, res: Response, next: NextFunction) {
+    try {
+      const { email, password } = req.body;
+      const login = await new UserLogic().loginUser({ email, password });
+      res.json({
+        success: true,
+        message: "Login successful",
+        data: login,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 export default UserController;
