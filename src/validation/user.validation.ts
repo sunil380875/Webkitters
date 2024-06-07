@@ -37,6 +37,20 @@ const UserValidation = {
       .withMessage("id is required")
       .isMongoId()
       .withMessage("Invalid id format"),
+    body("email")
+      .optional()
+      .exists()
+      .not()
+      .isEmpty()
+      .withMessage("email is required")
+      .isEmail()
+      .withMessage("Email should be a valid email address"),
+    body("name")
+      .optional()
+      .exists()
+      .not()
+      .isEmpty()
+      .withMessage("name is required"),
   ],
 };
 export default UserValidation;
