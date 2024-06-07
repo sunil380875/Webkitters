@@ -35,13 +35,13 @@ const userSchema = new Schema<USER_TYPE, Model<USER_TYPE>>(
     profilePicturePath: {
       type: String,
     },
-    status: {
-      type: String,
-      enum: {
-        values: ["ACTIVE", "BLOCK"],
-      },
-      default: "ACTIVE",
-    },
+    // status: {
+    //   type: String,
+    //   enum: {
+    //     values: ["ACTIVE", "BLOCK"],
+    //   },
+    //   default: "ACTIVE",
+    // },
   },
   { timestamps: true }
 ).pre<USER_TYPE>("save", async function (next) {

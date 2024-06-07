@@ -9,5 +9,5 @@ export default interface USER_TYPE extends Document {
   role: ROLE;
   profilePicture?: string;
   profilePicturePath?: string;
-  status: "ACTIVE" | "BLOCK";
+  // status: "ACTIVE" | "BLOCK";
 }
