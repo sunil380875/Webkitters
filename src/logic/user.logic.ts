@@ -17,6 +17,7 @@ class UserLogic {
             dir: "users",
           })
         : undefined;
+
       const signup = await User.create({
         name,
         email,
