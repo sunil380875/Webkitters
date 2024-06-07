@@ -30,5 +30,13 @@ const UserValidation = {
       .isLength({ min: 4, max: 100 })
       .withMessage("Password must be between 4 and 100 characters"),
   ],
+  editProfile: [
+    param("id")
+      .not()
+      .isEmpty()
+      .withMessage("id is required")
+      .isMongoId()
+      .withMessage("Invalid id format"),
+  ],
 };
 export default UserValidation;

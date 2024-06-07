@@ -111,7 +111,7 @@ export default class MediaStoreService {
 
         return resolve({
           path: `${params?.Key}`,
-          url: `https://${configs.CLOUD_FRONT_DOMAIN}/${params?.Key}`,
+          url: `${configs.CLOUD_FRONT_DOMAIN}/${params?.Key}`,
         });
       } catch (error) {
         return reject(error);

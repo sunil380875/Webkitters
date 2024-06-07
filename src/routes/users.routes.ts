@@ -2,6 +2,7 @@ import { Router } from "express";
 import { UserController } from "../controllers";
 import UserValidation from "../validation/user.validation";
 import ProtectedMiddleware from "../middleware/protected.middleware";
+import { User } from "../model";
 
 export default class UserRoutes {
   private router: Router;
@@ -30,6 +31,13 @@ export default class UserRoutes {
       "/profile",
       new ProtectedMiddleware().protected,
       this.userController.userProfile
+    );
+    // user profile get
+    this.router.put(
+      "/profile-edit/:id",
+      UserValidation.editProfile,
+      new ProtectedMiddleware().protected,
+      this.userController.editUserProfile
     );
   }
 }

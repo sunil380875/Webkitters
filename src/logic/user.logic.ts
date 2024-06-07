@@ -9,6 +9,12 @@ type SIGNUP_TYPE = {
   password: string;
   photo: UploadedFile;
 };
+type PROFILE_EDIT_TYPE = {
+  name: string;
+  email: string;
+  photo: UploadedFile;
+  id: string;
+};
 type DATA_TYPE = {
   name: string;
   email: string;
@@ -104,6 +110,32 @@ class UserLogic {
       ]);
       if (!user[0].email) throw new NotFound("User not found");
       return user[0];
+    } catch (error) {
+      throw error;
+    }
+  }
+  public async editUserProfile({ id, name, email, photo }: PROFILE_EDIT_TYPE) {
+    try {
+      const photoURL = photo
+        ? await new MediaStoreService().uploadMedia({
+            file: photo,
+            dir: "users",
+          })
+        : undefined;
+      console.log(photoURL);
+      const editProfile = await User.findByIdAndUpdate(id, {
+        name,
+        email,
+        profilePicture: photoURL?.url,
+        profilePicturePath: photoURL?.path,
+      });
+
+      if (editProfile && editProfile?.profilePicturePath) {
+        await new MediaStoreService().deleteMedia(
+          editProfile?.profilePicturePath
+        );
+      }
+      return true;
     } catch (error) {
       throw error;
     }

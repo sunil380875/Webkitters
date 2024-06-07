@@ -56,5 +56,28 @@ class UserController {
       next(error);
     }
   }
+  public async editUserProfile(
+    req: MIDDLEWARE_REQUEST_TYPE,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      const id = req?.params?.id;
+      const { name, email } = req?.body;
+      const photo = req?.files?.photo as UploadedFile;
+      const profile = await new UserLogic().editUserProfile({
+        name,
+        email,
+        photo,
+        id,
+      });
+      res.json({
+        success: true,
+        message: "Successful update the profile.",
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 export default UserController;
