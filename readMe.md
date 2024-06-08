@@ -13,3 +13,5 @@ npm run dev
 npx tsc   then npm run start
 
 # Step 6 Check postman docomentation for apis
+
+# step 7 For Bulk Upload use the samplefile provide in mail
