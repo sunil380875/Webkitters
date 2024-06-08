@@ -18,5 +18,10 @@ export default class QuestionRoutes {
       QuestionValidation.create,
       this.questionController.addQuestion
     );
+    this.router.post(
+      "/add-bulk",
+      //   QuestionValidation.create,
+      this.questionController.addBulkQuestion
+    );
   }
 }
