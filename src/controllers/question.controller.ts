@@ -54,17 +54,18 @@ class QuestionController {
         const category = await Category.findOne({
           title: data?.category.trim().toUpperCase(),
         });
-        if (!category) {
+        if (category) {
+          const addData = await Question.create({
+            question: data?.question,
+            option_one: data?.option_one,
+            option_two: data?.option_two,
+            option_three: data?.option_three,
+            option_four: data?.option_four,
+            category: category?._id,
+          });
+        } else if (!category) {
           notUploaded.push(data);
         }
-        const addData = await Question.create({
-          question: data?.question,
-          option_one: data?.option_one,
-          option_two: data?.option_two,
-          option_three: data?.option_three,
-          option_four: data?.option_four,
-          category: category?._id,
-        });
 
         a++;
         console.log(a);

@@ -5,7 +5,7 @@ const categorySchema = new Schema<CATEGORIES_TYPE, Model<CATEGORIES_TYPE>>(
   {
     title: {
       type: String,
-      required: true,
+      // required: true,
       unique: true,
     },
   },
