@@ -13,10 +13,20 @@ class CategoryLogic {
       throw error;
     }
   }
-  public async getCategories({ perPage, pageNo }: any) {
+  public async getCategories({ perPage, pageNo, question }: any) {
     try {
       let args: PipelineStage[] = [];
       args.push({ $sort: { createdAt: -1 } });
+      if (question === "ok") {
+        args.push({
+          $lookup: {
+            from: "questions",
+            localField: "_id",
+            foreignField: "category",
+            as: "question",
+          },
+        });
+      }
       const categories = await aggregationData({
         model: Category,
         per_page: perPage,

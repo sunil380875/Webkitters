@@ -23,10 +23,11 @@ class CategoriesController {
   public async getCategories(req: Request, res: Response, next: NextFunction) {
     try {
       fieldValid(req);
-      const { perPage, pageNo } = req.query;
+      const { perPage, pageNo, question } = req.query;
       const categories = await new CategoryLogic().getCategories({
         perPage: typeof perPage == "number" ? perPage : undefined,
         pageNo: typeof pageNo == "number" ? pageNo : undefined,
+        question: question === "ok" ? question : undefined,
       });
       res.json({
         success: true,
