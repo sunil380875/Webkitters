@@ -15,7 +15,6 @@ class CategoryLogic {
   }
   public async getCategories({ perPage, pageNo }: any) {
     try {
-      console.log(perPage, pageNo);
       let args: PipelineStage[] = [];
       args.push({ $sort: { createdAt: -1 } });
       const categories = await aggregationData({
