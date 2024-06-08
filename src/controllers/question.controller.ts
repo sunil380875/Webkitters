@@ -68,7 +68,7 @@ class QuestionController {
         }
 
         a++;
-        console.log(a);
+        // console.log(a);
       }
 
       res.json({
