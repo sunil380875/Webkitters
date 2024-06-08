@@ -2,7 +2,7 @@ import { Router } from "express";
 import { CategoriesController } from "../controllers";
 import CategoryValidation from "../validation/category.validation";
 
-export default class UserRoutes {
+export default class CategoryRoutes {
   private router: Router;
   private categoryController: CategoriesController;
 
