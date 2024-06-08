@@ -7,7 +7,7 @@ export const aggregationData = async ({
   sort,
   per_page,
   pageNo,
-  isTotalData,
+  isTotalData = true,
 }: any) => {
   try {
     sort &&

@@ -13,14 +13,15 @@ class CategoryLogic {
       throw error;
     }
   }
-  public async getCategories({ perPage, pageNO }: any) {
+  public async getCategories({ perPage, pageNo }: any) {
     try {
+      console.log(perPage, pageNo);
       let args: PipelineStage[] = [];
       args.push({ $sort: { createdAt: -1 } });
       const categories = await aggregationData({
         model: Category,
         per_page: perPage,
-        pageNo: pageNO,
+        pageNo: pageNo,
         args: args,
         isTotalData: true,
       });

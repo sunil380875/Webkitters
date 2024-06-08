@@ -18,5 +18,11 @@ export default class UserRoutes {
       CategoryValidation.create,
       this.categoryController.createCategory
     );
+    //  create category
+    this.router.get(
+      "/",
+      CategoryValidation.get,
+      this.categoryController.getCategories
+    );
   }
 }
