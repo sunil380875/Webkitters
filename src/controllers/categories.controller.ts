@@ -8,7 +8,9 @@ class CategoriesController {
     try {
       fieldValid(req);
       const { title } = req.body;
-      const category = await new CategoryLogic().createCategory({ title });
+      const category = await new CategoryLogic().createCategory({
+        title: title.trim().toUpperCase(),
+      });
       res.json({
         success: true,
         message: "Successful",
