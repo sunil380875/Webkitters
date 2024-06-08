@@ -73,7 +73,9 @@ class QuestionController {
 
       res.json({
         success: true,
-        message: "Successful",
+        message: notUploaded.length
+          ? "Some Part is not uploaded"
+          : "Successful",
         notUploadData: notUploaded,
       });
     } catch (error) {
